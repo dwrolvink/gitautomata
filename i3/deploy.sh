@@ -30,17 +30,23 @@ printstep "Updating repository"
 pacman -Syuu
 
 
-# Install applications
+# System apps
 pacman -S yay 				--noconfirm
 pacman -S moreutils			--noconfirm
 
-printstep "Installing Chrome"
-pacman -S chromium 			--noconfirm
-printstep "Installing minor applications"
-pacman -S pcmanfm 			--noconfirm
+# Network drive functionality
 pacman -S smbclient 			--noconfirm
-pacman -S lxappearance 			--noconfirm
 pacman -S manjaro-settings-samba 	--noconfirm
+
+# Main applications
+pacman -S chromium 			--noconfirm
+pacman -S pcmanfm 			--noconfirm
+
+# Theming
+pacman -S lxappearance 			--noconfirm
+
+# For current projects (might remove again later)
+pacman -S sfml				--noconfirm
 
 
 #############################################
