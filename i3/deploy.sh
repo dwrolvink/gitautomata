@@ -55,9 +55,9 @@ echo "URxvt.shading:20"						>> /home/dorus/.Xresources
 sudo -u dorus mkdir /home/dorus/nwd
 
 # Copy files over
-cp -f .i3/config 	/home/dorus/.i3/config			# i3 config
-cp    mountnwd.service 	/etc/systemd/system/mountnwd.service	# Mount network drive
-cp    20-radeon.conf 	/etc/X11/xorg.conf.d/20-radeon.conf 	# anti tearing
+cp -f config/i3-config 		/home/dorus/.i3/config			# i3 config
+cp    config/mountnwd.service 	/etc/systemd/system/mountnwd.service	# Mount network drive
+cp    config/20-radeon.conf 	/etc/X11/xorg.conf.d/20-radeon.conf 	# anti tearing
 
 # Mount network drive
 cp -f mountnwd.service /etc/systemd/system/mountnwd.service
