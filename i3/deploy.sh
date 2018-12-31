@@ -5,21 +5,7 @@ if [ "$(id -u)" != "0" ]; then
 	exit 1
 fi
 
-printstep(){
-        BLUE='\033[0;34m'
-        REEE='\033[0;31m'
-        NC='\033[0m' # No Color
-
-        ERROR=1
-
-        if [[ $2 -eq $ERROR ]];
-        then
-              echo -e "${REEE} ${1} ${NC}"
-        else
-              echo -e "${BLUE} ${1} ${NC}"
-        fi
-}
-
+. ../_functions.sh
 
 #############################################
 printstep "[Updating system and installing applications]"
@@ -29,24 +15,26 @@ printstep "[Updating system and installing applications]"
 printstep "Updating repository"
 pacman -Syuu
 
-
 # System apps
-pacman -S yay 				--noconfirm
-pacman -S moreutils			--noconfirm
+pacman -S 		yay 			--noconfirm
+pacman -S 		moreutils		--noconfirm
 
 # Network drive functionality
-pacman -S smbclient 			--noconfirm
-pacman -S manjaro-settings-samba 	--noconfirm
+pacman -S 		smbclient 		--noconfirm
+pacman -S 		manjaro-settings-samba 	--noconfirm
 
 # Main applications
-pacman -S chromium 			--noconfirm
-pacman -S pcmanfm 			--noconfirm
+pacman -S 		chromium 		--noconfirm
+sudo -u dorus yay 	spotify			
+pacman -S 		pcmanfm 		--noconfirm
+pacman -S 		code			--noconfirm
+pacman -S 		virtualbox		
 
 # Theming
-pacman -S lxappearance 			--noconfirm
+pacman -S 		lxappearance 		--noconfirm
 
 # For current projects (might remove again later)
-pacman -S sfml				--noconfirm
+pacman -S 		sfml			--noconfirm
 
 
 #############################################
@@ -58,14 +46,14 @@ sudo -u dorus mkdir /home/dorus/nwd
 sudo -u dorus mkdir /home/dorus/std-conf
 
 # Backup standard config files
-cp   /home/dorus/.i3/config		/home/dorus/std-conf/i3-conf
-cp   /home/dorus/.Xresources		/home/dorus/std-conf/.Xresources
+cp   /home/dorus/.i3/config	/home/dorus/std-conf/i3-conf
+cp   /home/dorus/.Xresources	/home/dorus/std-conf/.Xresources
 
 # Copy files over
 cp -f config/i3-config 		/home/dorus/.i3/config			# i3 config
 cp    config/mountnwd.service 	/etc/systemd/system/mountnwd.service	# Mount network drive
 cp    config/20-radeon.conf 	/etc/X11/xorg.conf.d/20-radeon.conf 	# anti tearing
-cp  -f  /etc/i3status.conf 	~/.i3status.conf
+cp -f /etc/i3status.conf 	~/.i3status.conf
 
 
 # Tweaking
