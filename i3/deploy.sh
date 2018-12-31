@@ -32,6 +32,8 @@ pacman -Syuu
 
 # Install applications
 pacman -S yay 				--noconfirm
+pacman -S moreutils			--noconfirm
+
 printstep "Installing Chrome"
 pacman -S chromium 			--noconfirm
 printstep "Installing minor applications"
@@ -57,6 +59,8 @@ cp   /home/dorus/.Xresources		/home/dorus/std-conf/.Xresources
 cp -f config/i3-config 		/home/dorus/.i3/config			# i3 config
 cp    config/mountnwd.service 	/etc/systemd/system/mountnwd.service	# Mount network drive
 cp    config/20-radeon.conf 	/etc/X11/xorg.conf.d/20-radeon.conf 	# anti tearing
+cp  -f  /etc/i3status.conf 	~/.i3status.conf
+
 
 # Tweaking
 # Terminal settings
@@ -67,6 +71,9 @@ echo "VISUAL=nano; export VISUAL EDITOR=nano; export EDITOR" 	>> /home/dorus/.pr
 echo "URxvt.transparent: true" 					>> /home/dorus/.Xresources
 echo "URxvt.shading: 20"					>> /home/dorus/.Xresources
 echo "URxvt*color12: #f2db32"					>> /home/dorus/.Xresources
+
+# Set lan: 192..." color in i3 status bar to #f2db32
+cat /home/dorus/.i3status.conf | awk '{gsub(/color_good = "#[a-zA-Z0-9]{6}"/,"color_good = \"#f2db32\"")}1' | sponge /home/dorus/.i3status.conf
 
 
 
