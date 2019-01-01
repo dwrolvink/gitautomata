@@ -12,27 +12,28 @@
 # - Create site config file
 # ---------------------------
 
+# Constants
+MANJARO=0
+UBUNTU=1
+
 # Config
 # ---------------------------
 mainUser='dorus'
 setWWWData=0
+distro=$UBUNTU
 
 # Install nginx
 # ---------------------------
-# [/MANJARO]
-#   sudo pacman -S nginx
-# [/MANJARO]
-# [UBUNTU]
+if [[ $distro -eq $MANJARO ]];
+then
+    sudo pacman -S nginx
+    sudo mkdir /etc/nginx/sites-available/
+    sudo mkdir /etc/nginx/sites-enabled/
+    
+elif [[ $distro -eq $UBUNTU ]];
+then
     sudo apt-get install nginx
-# [/UBUNTU]
-
-# Create proper folders
-# ---------------------------
-# Create sites directories
-# [MANJARO]
-#   sudo mkdir /etc/nginx/sites-available/
-#   sudo mkdir /etc/nginx/sites-enabled/
-# [/MANJARO]
+fi
 
 # Set rights
 # ---------------------------
