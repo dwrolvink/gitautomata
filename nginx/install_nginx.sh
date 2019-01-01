@@ -14,26 +14,35 @@
 
 # Config
 # ---------------------------
-$mainUser='dorus'
+mainUser='dorus'
 
 # Install nginx
 # ---------------------------
-sudo pacman -S nginx
+# [/MANJARO]
+#   sudo pacman -S nginx
+# [/MANJARO]
+# [UBUNTU]
+    sudo apt-get install nginx
+# [/UBUNTU]
 
 # Create proper folders
 # ---------------------------
 # Create sites directories
-sudo mkdir /etc/nginx/sites-available/
-sudo mkdir /etc/nginx/sites-enabled/
+# [MANJARO]
+#   sudo mkdir /etc/nginx/sites-available/
+#   sudo mkdir /etc/nginx/sites-enabled/
+# [/MANJARO]
 
 # Set rights
 # ---------------------------
 # Create www-data group, and add main user to it
-sudo groupadd www-data
-sudo usermod $mainUser -a -G www-data
+# [DO ONCE]
+#sudo groupadd www-data
+#sudo usermod $mainUser -a -G www-data
 
 # Give www-data rights to everything in /var/www/
-sudo chown -R :www-data /var/www/
+#sudo chown -R :www-data /var/www/
+# [DO ONCE]
 
 # Edit nginx main file
 # ---------------------------
