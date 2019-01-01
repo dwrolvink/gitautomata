@@ -1,6 +1,6 @@
 createNewSite()
 {
-    $website=${1}
+    website=${1}
     
     # Create website directory
     mkdir /var/www/$website
