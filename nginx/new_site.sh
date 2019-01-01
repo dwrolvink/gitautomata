@@ -19,7 +19,7 @@ createNewSite()
     }                                     \n\
     "
     # Write site configuration to sites-available
-    echo -e $SITE | sudo tee -a  /etc/nginx/sites-available/${website}
+    echo -e $SITE | sudo tee -a  /etc/nginx/sites-available/${website} > /dev/null
 
     # Create symbolic link to sites-enabled. 
     # Note: this link must be done with full pathnames
