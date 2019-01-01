@@ -15,6 +15,7 @@
 # Config
 # ---------------------------
 mainUser='dorus'
+setWWWData=0
 
 # Install nginx
 # ---------------------------
@@ -36,13 +37,14 @@ mainUser='dorus'
 # Set rights
 # ---------------------------
 # Create www-data group, and add main user to it
-# [DO ONCE]
-#sudo groupadd www-data
-#sudo usermod $mainUser -a -G www-data
+if [[ $setWWWData -eq 1 ]];
+then
+    sudo groupadd www-data
+    sudo usermod $mainUser -a -G www-data
 
-# Give www-data rights to everything in /var/www/
-#sudo chown -R :www-data /var/www/
-# [DO ONCE]
+    # Give www-data rights to everything in /var/www/
+    sudo chown -R :www-data /var/www/
+fi
 
 # Edit nginx main file
 # ---------------------------
