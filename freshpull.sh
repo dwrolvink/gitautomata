@@ -23,11 +23,11 @@ printstep "Done"
 printstep "Getting most recent code from default branch"
 cd $MAINFOLDER/${BACKEND}
 git fetch --all
-git reset --hard 
+git reset --hard $DEFAULTBRANCH
 
 cd $DEVFOLDER/${FRONTEND}
 git fetch --all
-git reset --hard 
+git reset --hard $DEFAULTBRANCH
 printstep "Done"
 
 # Copy config files back
