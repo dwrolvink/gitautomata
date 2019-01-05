@@ -1,6 +1,3 @@
-# NOTE! BEFORE YOU BEGIN! 
-# - Create /var/www yourself
-
 # Main folder
 # This is you. You need sudo privileges
 MAINUSER='dorus'
