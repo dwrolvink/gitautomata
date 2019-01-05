@@ -1,6 +1,11 @@
-TESTVAR="Config Loaded."
 
 . _private_info_config.sh
+
+# Check if _private_info_config.sh has been filled in
+if [ -z "$GITUSERNAME" ]; then
+  echo -e "\033[0;31m Error! Fill in _private_info_config.sh before running this script! \033[0m" 1>&2
+  exit 64
+fi
 
 # Main website.
 # This will be the main entry point for our website, backend and frontend
@@ -27,4 +32,5 @@ BACKENDGIT="https://github.com/konishi-project/zimmerman.git"
 BACKEND='zimmerman'
 BACKENDPORT=4000
 
+TESTVAR="Config Loaded."
 
