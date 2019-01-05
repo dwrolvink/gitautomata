@@ -59,10 +59,10 @@
  rm -rf $FRONTENDFOLDER
  
  # Get data from github
- cd $MAINFOLDER
+ cd $BACKENDPARENT
  git clone https://github.com/konishi-project/zimmerman.git
  
- cd $DEVFOLDER
+ cd $FRONTENDPARENT
  git clone https://github.com/konishi-project/higala.git
  
  ##############################################
