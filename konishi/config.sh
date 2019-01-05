@@ -1,3 +1,6 @@
+# NOTE! BEFORE YOU BEGIN! 
+# - Create /var/www yourself
+
 # Main folder
 # This is you. You need sudo privileges
 MAINUSER='dorus'
@@ -16,6 +19,9 @@ MAINFOLDER="/var/www"
 # Higala is therefore not running directly (unless when in dev mode)
 # And thus separated out from /var/www/ to avoid confusion
 DEVFOLDER="/var/www/dev" 
+
+# Installation location of Gitautomata
+GITAUTOMATA="$MAINFOLDER/gitautomata"
 
 # Default branch.
 # For 'git reset --hard [branch name]' you need to input a branch name, it doesn't work without it.
