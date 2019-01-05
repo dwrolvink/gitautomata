@@ -1,6 +1,6 @@
 TESTVAR="Config Loaded."
 
-. _private_info_config
+. _private_info_config.sh
 
 # Main website.
 # This will be the main entry point for our website, backend and frontend
