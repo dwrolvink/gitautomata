@@ -20,7 +20,7 @@ InstallNginx()
 
     # Config
     # ---------------------------
-    mainUser='dorus'
+    mainUser=${1}
     setWWWData=0
     distro=$UBUNTU
 
