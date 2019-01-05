@@ -17,8 +17,8 @@ MAINFOLDER="/var/www"
 # And thus separated out from /var/www/ to avoid confusion
 DEVFOLDER="/var/www/dev" 
 
-# Installation location of Gitautomata
-GITAUTOMATA="$MAINFOLDER/gitautomata"
+# Installation location of the konishi code in Gitautomata on disk
+GITAUTOMATA="$MAINFOLDER/gitautomata/konishi"
 
 # Default branch.
 # For 'git reset --hard [branch name]' you need to input a branch name, it doesn't work without it.
