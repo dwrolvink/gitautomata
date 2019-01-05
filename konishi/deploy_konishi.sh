@@ -12,7 +12,7 @@ then
       printstep "Config file not loaded" $ERRORMSG
       exit 1     
 else
-      printstep $TESTVAR
+      printstep "$TESTVAR"
 fi
   
  ##############################################
