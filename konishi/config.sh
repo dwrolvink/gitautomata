@@ -29,13 +29,13 @@ DEFAULTBRANCH="origin/dev"
 # Frontend
 FRONTENDGIT="https://github.com/konishi-project/higala.git"
 FRONTEND='higala'
-FRONTENDFOLDER="$DEVFOLDER/$FRONTEND"
+FRONTENDFOLDER="$DEVFOLDER/$FRONTEND"  # note: deploy_konishi.sh assumes this path, don't change it without changing deploy_konishi.sh too
 FRONTENDPORT=8080
 
 # Backend
 BACKENDGIT="https://github.com/konishi-project/zimmerman.git"
 BACKEND='zimmerman'
-BACKENDFOLDER="$MAINFOLDER/$BACKEND"
+BACKENDFOLDER="$MAINFOLDER/$BACKEND"  # note: deploy_konishi.sh assumes this path, don't change it without changing deploy_konishi.sh too
 BACKENDPORT=4000
 
 # Test if this config is loaded properly in other scripts using this string
