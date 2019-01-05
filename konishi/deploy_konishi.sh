@@ -1,10 +1,19 @@
 #!/bin/bash
 
- . _functions.sh
- . _gitautomata_config.sh
+ . ../_functions.sh
+ . config.sh
  
  . ../nginx/nginx.sh
  . ../nginx/new_site.sh 
+ 
+ # Check if config is loaded
+if [ -z "$TESTVAR" ]
+then
+      printstep "Config file not loaded" $ERRORMSG
+      exit 1     
+else
+      printstep $TESTVAR
+fi
   
  ##############################################
  #               SET UP FOLDERS               #
