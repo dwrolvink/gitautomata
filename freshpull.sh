@@ -20,14 +20,14 @@ printstep "Done"
 
 # Get most recent code from github
 # --------------------------------
-printstep "Getting most recent code from origin/master"
+printstep "Getting most recent code from default branch"
 cd $MAINFOLDER/${BACKEND}
 git fetch --all
-git reset --hard origin/master
+git reset --hard 
 
 cd $DEVFOLDER/${FRONTEND}
 git fetch --all
-git reset --hard origin/master
+git reset --hard 
 printstep "Done"
 
 # Copy config files back
