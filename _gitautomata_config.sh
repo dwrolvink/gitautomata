@@ -14,6 +14,8 @@ MAINFOLDER="/var/www"
 # And thus separated out from /var/www/ to avoid confusion
 DEVFOLDER="/var/www/dev" 
 
+DEFAULTBRANCH="origin/dev"
+
 # Frontend
 FRONTENDGIT="https://github.com/konishi-project/higala.git"
 FRONTEND='higala'
