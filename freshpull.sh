@@ -5,8 +5,8 @@
 
 if [ -z "$TESTVAR" ]
 then
-      printstep "Config file not loaded" error
-      exit      
+      printstep "Config file not loaded" $ERRORMSG
+      exit 1     
 else
       printstep $TESTVAR
 fi
