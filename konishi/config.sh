@@ -32,11 +32,13 @@ DEFAULTBRANCH="origin/dev"
 # Frontend
 FRONTENDGIT="https://github.com/konishi-project/higala.git"
 FRONTEND='higala'
+FRONTENDFOLDER="$DEVFOLDER/$FRONTEND"
 FRONTENDPORT=8080
 
 # Backend
 BACKENDGIT="https://github.com/konishi-project/zimmerman.git"
 BACKEND='zimmerman'
+BACKENDFOLDER="$MAINFOLDER/$BACKEND"
 BACKENDPORT=4000
 
 # Test if this config is loaded properly in other scripts using this string
