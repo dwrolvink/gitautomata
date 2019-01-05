@@ -1,3 +1,6 @@
+# Main folder
+# This is you. You need sudo privileges
+MAINUSER='dorus'
 
 # Main website.
 # This will be the main entry point for our website, backend and frontend
@@ -14,6 +17,10 @@ MAINFOLDER="/var/www"
 # And thus separated out from /var/www/ to avoid confusion
 DEVFOLDER="/var/www/dev" 
 
+# Default branch.
+# For 'git reset --hard [branch name]' you need to input a branch name, it doesn't work without it.
+# Git reset is useful for completely resetting all the files in git, while preserving the files that are in .gitignore.
+# For example, 'rm -rf /var/www/zimmerman; git clone [url];' would reset the code, but it would also remove the database.
 DEFAULTBRANCH="origin/dev"
 
 # Frontend
@@ -26,5 +33,6 @@ BACKENDGIT="https://github.com/konishi-project/zimmerman.git"
 BACKEND='zimmerman'
 BACKENDPORT=4000
 
+# Test if this config is loaded properly in other scripts using this string
 TESTVAR="Config Loaded."
 
