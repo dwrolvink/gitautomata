@@ -5,7 +5,7 @@ createNewSite()
     
     # Check if website already exists
     if [ -d "$webfolder/$website" ] || [ -f /etc/nginx/sites-available/${website} ] ; then
-        echo -e "\033[0;31m Website $website seems to already exist, skipping site creation. \033[0m" 1>&2
+        echo -e "\033[0;31m Website $website seems to already exist, skipping site creation. \033[0m"
         exit 0
     fi
     
