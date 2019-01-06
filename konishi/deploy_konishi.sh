@@ -86,9 +86,9 @@ fi
  printstep "Setting up zimmerman"
  cd $BACKENDFOLDER
  
- printstep "STOP... HAMMERTIME!" $ERRORMSG
- printstep "Open a new SSH window, and do the following:" $NOTIFMSG
- printstep "- Set SQLALCHEMY_DATABASE_URI='sqlite:////${BACKENDFOLDER}/konishi.db' in /${BACKENDFOLDER}/config.py" $NOTIFMSG
+ printstep "STOP... HAMMERTIME!" $ERRORMSG 1
+ printstep "Open a new SSH window, and do the following:" $NOTIFMSG 1
+ printstep "- Set SQLALCHEMY_DATABASE_URI='sqlite:///${BACKENDFOLDER}/konishi.db' in ${BACKENDFOLDER}/config.py" $NOTIFMSG 1
  read -rsp $'Press any key to continue when you\'re done...\n' -n1 key
 
  # Copy config.py over to a backup folder, so it will be restored after doing 'git reset' in freshpull.sh
