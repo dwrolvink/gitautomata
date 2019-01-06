@@ -14,15 +14,15 @@ printstep(){
         if [[ $2 -eq $ERROR ]]; 
         then
               echo -e "${REEE} ${1} ${NC}"
-              printstepLOG+="error: ${1}"
+              printstepLOG+="error: ${1}\n"
               
         elif [[ $2 -eq $NOTIFICATION ]];
         then
               echo -e "${YELLOW} ${1} ${NC}"
-              printstepLOG+="notification: ${1}"
+              printstepLOG+="notification: ${1}\n"
         else
               echo -e "${BLUE} ${1} ${NC}"
-              printstepLOG+="${1}"
+              printstepLOG+="${1}\n"
         fi
 }
 
