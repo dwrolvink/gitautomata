@@ -34,7 +34,7 @@ printstep(){
         fi
         
         # Save message to log, for later viewing
-        if [ $printOption -eq 0 ] ; then
+        if [ $printOption -ne 1 ] ; then
                 printstepLOG+="${strout}\n"
         fi
        
