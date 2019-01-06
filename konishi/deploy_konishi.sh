@@ -39,7 +39,7 @@ fi
  
  sudo apt-get update
  sudo apt-get install python3-pip --yes
- pip install virtualenv
+ pip3 install virtualenv
  sudo apt-get install sqlite --yes
  
  ##############################################
