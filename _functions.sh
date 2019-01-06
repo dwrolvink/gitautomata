@@ -1,5 +1,6 @@
 ERRORMSG=1
 NOTIFMSG=2
+printstepLOG=""
 
 printstep(){
         BLUE='\033[0;34m'
@@ -13,12 +14,15 @@ printstep(){
         if [[ $2 -eq $ERROR ]]; 
         then
               echo -e "${REEE} ${1} ${NC}"
+              printstepLOG+="error: ${1}"
               
         elif [[ $2 -eq $NOTIFICATION ]];
         then
               echo -e "${YELLOW} ${1} ${NC}"
+              printstepLOG+="notification: ${1}"
         else
               echo -e "${BLUE} ${1} ${NC}"
+              printstepLOG+="${1}"
         fi
 }
 
