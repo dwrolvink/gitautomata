@@ -3,26 +3,43 @@ NOTIFMSG=2
 printstepLOG=""
 
 printstep(){
+        
+        message=${1}
+        messageType=${2}
+        printOption=${3}
+        
+        # Colors
         BLUE='\033[0;34m'
         YELLOW='\033[0;33m'
         REEE='\033[0;31m'
         NC='\033[0m' # No Color
 
+        # Message type constants
         ERROR=1
         NOTIFICATION=2
-
+        
+        # Printoptions
+        # 0/not set     normal behavior
+        # 1             don't save to log
+                        
+        # Build string out
         if [[ $2 -eq $ERROR ]]; 
         then
-              echo -e "${REEE} ${1} ${NC}"
-              printstepLOG+="error: ${1}\n"
-              
+              strout="${REEE} ${message} ${NC}"
         elif [[ $2 -eq $NOTIFICATION ]];
         then
-              echo -e "${YELLOW} ${1} ${NC}"
-              printstepLOG+="notification: ${1}\n"
+              strout="${YELLOW} ${1} ${NC}"
         else
-              echo -e "${BLUE} ${1} ${NC}"
-              printstepLOG+="${1}\n"
+              strout="${BLUE} ${1} ${NC}"
         fi
+        
+        # Save message to log, for later viewing
+        if [ $printOption -eq 0 ] ; then
+                printstepLOG+="${strout}\n"
+        fi
+       
+       # Echo to console
+       echo -e "$strout"
+        
 }
 
