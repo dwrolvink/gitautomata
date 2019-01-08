@@ -1,7 +1,7 @@
 # Load Config
 # --------------------------------
-. _functions.sh
-. _gitautomata_config
+. ../_functions.sh
+. config
 
 if [ -z "$TESTVAR" ]
 then
