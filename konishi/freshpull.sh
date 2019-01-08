@@ -50,6 +50,7 @@ python3 app.py &
 # --------------------------------
 printstep "Compiling Higala..."
 cd ${DEVFOLDER}/${FRONTEND}
+npm audit fix
 npm run build --fix
 
 printstep "Copying dist files over..."
