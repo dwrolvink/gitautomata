@@ -136,6 +136,8 @@ fi
  mkdir $GITAUTOMATA/$FRONTEND/src
  cp $FRONTENDFOLDER/src/config.js $GITAUTOMATA/$FRONTEND/src/config.js
  
+ # Install npm
+ npm install 
 
 echo -e "\n\n------------------"
 echo "Script is finished"
