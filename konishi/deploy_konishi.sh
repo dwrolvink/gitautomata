@@ -21,10 +21,8 @@ if [ -d "$BACKENDFOLDER" ]; then
   printstep "There seems to be already a website installed on this machine." $NOTIFMSG
   printstep "Running this script will delete all data. Run freshpull.sh to only update the code."
   read -r -p "Do you want to continue? y/N" response
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
-  then
-      # Continue
-  else
+  
+  if [[ "$response" !=~ ^([yY][eE][sS]|[yY])+$ ]]
       exit 1
   fi
 fi
