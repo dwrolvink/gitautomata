@@ -23,10 +23,10 @@ printstep(){
         # 1             don't save to log
                         
         # Build string out
-        if [[ $2 -eq $ERROR ]]; 
+        if [[ "$2" -eq "$ERROR" ]]; 
         then
               strout="${REEE} ${message} ${NC}"
-        elif [[ $2 -eq $NOTIFICATION ]];
+        elif [[ "$2" -eq "$NOTIFICATION" ]];
         then
               strout="${YELLOW} ${1} ${NC}"
         else
