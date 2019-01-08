@@ -22,7 +22,7 @@ if [ -d "$BACKENDFOLDER" ]; then
   printstep "Running this script will delete all data. Run freshpull.sh to only update the code."
   read -r -p "Do you want to continue? y/N" response
   
-  if [[ "$response" !=~ ^([yY][eE][sS]|[yY])+$ ]]
+  if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
       exit 1
   fi
 fi
