@@ -34,7 +34,7 @@ InstallNginx()
 
     elif [[ $distro -eq $UBUNTU ]];
     then
-        sudo apt-get install nginx
+        sudo apt-get install nginx --yes
     fi
 
     # Set rights
