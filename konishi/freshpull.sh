@@ -14,8 +14,7 @@ fi
 # Stop zimmerman and higala
 # --------------------------------
 printstep "Stopping Higala and Zimmerman"
-fuser -k {/tcp
-fuser -k 4000/tcp
+fuser -k ${BACKENDPORT}/tcp
 printstep "Done"
 
 # Get most recent code from github
@@ -33,8 +32,8 @@ printstep "Done"
 # Copy config files back
 # --------------------------------
 printstep "Copying config files back (need to separate config still)"
-cp -a $MAINFOLDER/gitautomata/${BACKEND}/. $MAINFOLDER/${BACKEND}/
-cp -a $MAINFOLDER/gitautomata/${FRONTEND}/. $DEVFOLDER/${FRONTEND}/
+cp -a $MAINFOLDER/gitautomata/konishi/${BACKEND}/. $MAINFOLDER/${BACKEND}/
+cp -a $MAINFOLDER/gitautomata/konishi/${FRONTEND}/. $DEVFOLDER/${FRONTEND}/
 
 
 #Start zimmerman
