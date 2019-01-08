@@ -1,3 +1,6 @@
+
+#!/bin/bash
+
 # Load Config
 # --------------------------------
 . ../_functions.sh
