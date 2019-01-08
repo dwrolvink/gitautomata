@@ -1,7 +1,7 @@
 # Load Config
 # --------------------------------
 . ../_functions.sh
-. config
+. config.sh
 
 if [ -z "$TESTVAR" ]
 then
