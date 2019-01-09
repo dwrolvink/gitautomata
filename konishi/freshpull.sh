@@ -54,6 +54,6 @@ npm audit fix
 npm run build --fix
 
 printstep "Copying dist files over..."
-cp -rf {DEVFOLDER}/${FRONTEND}/dist/* {MAINFOLDER}/${MAINWEBSITE}/
+cp -rf ${DEVFOLDER}/${FRONTEND}/dist/* ${MAINFOLDER}/${MAINWEBSITE}/
 
 
