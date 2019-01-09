@@ -51,10 +51,12 @@ fi
  ##############################################
  printstep "Installing requirements"
  
- sudo apt-get update
+ # Add node.js ppa to Ubuntu so node and npm will be the latest version
+ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+ 
  sudo apt-get install python3-pip
  sudo -H pip3 install virtualenv
- sudo apt-get install npm
+ sudo apt install nodejs
  sudo apt-get install sqlite --yes
  
  ##############################################
