@@ -123,6 +123,40 @@ fi
  # Create database
  python3 $BACKENDFOLDER/zimmerman_installdb.py
  
+ # Create Nginx site block
+ server {
+	listen 80;
+    listen [::]:80;
+	server_name backend.konishi.club;
+
+	location / {
+		proxy_pass http://127.0.0.1:4000$request_uri;
+		proxy_set_header Host $host;
+	}
+}
+
+    # Configure site file
+    SITE="\
+    server {                              \n\
+      listen 80;                          \n\
+      listen [::]:80;                     \n\
+      server_name backend.konishi.club;   \n\
+      
+      
+      location / {                                        \n\
+        proxy_pass http://127.0.0.1:4000$request_uri;     \n\
+        proxy_set_header Host $host;                      \n\
+      }                                   \n\
+    }                                     \n\
+    "
+       
+    # Write site configuration to sites-available
+    echo -e $SITE | sudo tee -a  /etc/nginx/sites-available/backend > /dev/null
+    
+    # Create symbolic link to sites-enabled. 
+    # Note: this link must be done with full pathnames
+    sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled/backend    
+ 
  ##############################################
  #                 SETUP HIGALA               #
  ##############################################
