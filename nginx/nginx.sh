@@ -49,8 +49,16 @@ InstallNginx()
         sudo chown -R :www-data /var/www/
     fi
 
-    # Empty default site
+    # Empty default site block
     # ---------------------------
-    sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/_default_factory
-    sudo echo "" >> /etc/nginx/sites-available/default
+    if [[ $distro -eq $MANJARO ]];
+    then
+        sudo touch /etc/nginx/sites-available/default
+        
+    elif [[ $distro -eq $UBUNTU ]];
+    then
+        sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/_default_factory
+        sudo echo "" >> /etc/nginx/sites-available/default
+    fi    
+
 }
