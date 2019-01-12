@@ -15,16 +15,20 @@ createNewSite()
     # Configure site file
     SITE="\
     server {                              \n\
-      listen 80 default_server;           \n\
-      listen [::]:80 default_server;      \n\
-      root /var/www/${website};           \n\
-      index index.html;                   \n\
+      listen 80;                          \n\
+      listen [::]:80;                     \n\
       server_name ${website};             \n\
+      
+      
       location / {                        \n\
+        root /var/www/${website};         \n\
+        index index.html;                 \n\
         try_files $uri $uri/ =404;        \n\
       }                                   \n\
     }                                     \n\
     "
+       
+    
     # Write site configuration to sites-available
     echo -e $SITE | sudo tee -a  /etc/nginx/sites-available/${website} > /dev/null
 
