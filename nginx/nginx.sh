@@ -49,6 +49,8 @@ InstallNginx()
         sudo chown -R :www-data /var/www/
     fi
 
-    # Edit nginx main file
+    # Empty default site
     # ---------------------------
+    sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/_default_factory
+    sudo echo "" >> /etc/nginx/sites-available/default
 }
