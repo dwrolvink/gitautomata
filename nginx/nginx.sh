@@ -58,7 +58,7 @@ InstallNginx()
     elif [[ $distro -eq $UBUNTU ]];
     then
         sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/_default_factory
-        sudo echo "" >> /etc/nginx/sites-available/default
+        sudo echo "" > /etc/nginx/sites-available/default
     fi    
 
 }
