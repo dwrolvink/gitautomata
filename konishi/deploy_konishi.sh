@@ -74,9 +74,9 @@ fi
  # Add node.js ppa to Ubuntu so node and npm will be the latest version
  curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
  
- sudo apt-get install python3-pip
+ sudo apt-get install python3-pip --yes
  sudo -H pip3 install virtualenv
- sudo apt install nodejs
+ sudo apt-get install nodejs --yes
  sudo apt-get install sqlite --yes
  
  ##############################################
