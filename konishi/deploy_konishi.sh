@@ -169,7 +169,7 @@ fi
     sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled/backend    
     
     # Add user for Zimmerman
-	sudo adduser backend    
+	sudo adduser --disabled-password --gecos "" backend    
 	
 	# Set user and group of /var/www/zimmerman to ubuntu:backend (ubuntu being the ssl user)
 	sudo chown -R ubuntu:backend /var/www/zimmerman
