@@ -75,7 +75,7 @@ fi
  curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
  
  sudo apt-get install python3-pip --yes
- sudo -H pip3 install virtualenv
+ yes | sudo -H pip3 install virtualenv
  sudo apt-get install nodejs --yes
  sudo apt-get install sqlite --yes
  
