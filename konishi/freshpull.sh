@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Load Config
@@ -52,8 +51,11 @@ sudo systemctl start backend
 sleep 2s
 if ! systemctl is-active --quiet backend;
 then
-      printstep "Could not start Zimmerman" $ERRORMSG
+      printstep "Could not start Zimmerman." $ERRORMSG
       sudo systemctl status backend
+else
+      printstep "Zimmerman started succesfully."
+fi
 
 # Start higala
 # --------------------------------
