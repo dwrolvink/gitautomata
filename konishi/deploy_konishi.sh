@@ -5,6 +5,7 @@
  
  . ../nginx/nginx.sh
  . ../nginx/new_site.sh 
+
  
  # Check if config is loaded
 if [ -z "$TESTVAR" ]
@@ -14,6 +15,9 @@ then
 else
       printstep "$TESTVAR"
 fi
+
+ # enable execution of freshpull.sh
+ sudo chmod +x $GITAUTOMATA/freshpull.sh
 
 # Check if website already exists
 if [ -d "$BACKENDFOLDER" ]; then
