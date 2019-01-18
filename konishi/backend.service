@@ -1,0 +1,20 @@
+[Unit]
+Description=Konishi Backend Application
+
+# Make sure the network is initialized first
+After=network.target
+
+[Service]
+ExecStart=/var/www/zimmerman/konishienv/bin/python3 /var/www/zimmerman/app.py
+
+# Restart Backend when an error causes it to shutdown
+Restart=on-failure
+TimeoutStartSec=20
+WorkingDirectory=/var/www/zimmerman
+
+User=backend
+Group=backend
+
+[Install]
+# Make sure this service is started up after reboot
+WantedBy=multi-user.target
