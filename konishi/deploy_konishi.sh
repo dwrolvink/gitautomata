@@ -27,8 +27,28 @@ if [ -d "$BACKENDFOLDER" ]; then
   fi
 fi
   
-  
-  
+ ##############################################
+ #          SET UP USERS AND GROUPS           #
+ ##############################################  
+ if grep -q ssl-cert ;
+ then
+ 	printstep "ssl-cert already exists, skipping group creation" $NOTIFMSG
+ else
+	# Create group that will get permissions on /etc/ssl/private
+	sudo groupadd ssl-cert 
+
+	# Add root and www-data to ssl-cert group
+	sudo usermod -a -G ssl-cert www-data
+	sudo usermod -a -G ssl-cert root
+	
+	# Set group of /etc/ssl/private to ssl-cert
+	sudo chgrp ssl-cert /etc/ssl/private
+
+	# Change permissions on /etc/ssl/private
+	# 640: owner=read+write, group=read, public=none
+	sudo chmod 640 /etc/ssl/private
+fi
+
  ##############################################
  #               SET UP FOLDERS               #
  ##############################################  
@@ -115,31 +135,28 @@ fi
  # Copy db installation script over so it can find app.py
  cp $GITAUTOMATA/zimmerman_installdb.py $BACKENDFOLDER/zimmerman_installdb.py 
   
- # Create venv, and install venv requirements
+ # VENV
+ # =================================================
+ # Create venv, enter venv
  virtualenv konishienv
  source konishienv/bin/activate
+ 
+ # Install venv requirements
  pip3 install -r requirements.txt
  
  # Create database
  python3 $BACKENDFOLDER/zimmerman_installdb.py
  
+ # Exit venv
+ deactivate
+ # =================================================
+ 
  # Create Nginx site block
- server {
-	listen 80;
-    listen [::]:80;
-	server_name backend.konishi.club;
-
-	location / {
-		proxy_pass http://127.0.0.1:4000$request_uri;
-		proxy_set_header Host $host;
-	}
-}
-
     # Configure site file
     SITE="\
     server {                              \n\
-      listen 80;                          \n\
-      listen [::]:80;                     \n\
+      listen 443;                          \n\
+      listen [::]:443;                     \n\
       server_name backend.konishi.club;   \n\
       
       
@@ -156,6 +173,39 @@ fi
     # Create symbolic link to sites-enabled. 
     # Note: this link must be done with full pathnames
     sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled/backend    
+    
+    # Add user for Zimmerman
+	sudo adduser backend    
+	
+	# Set user and group of /var/www/zimmerman to ubuntu:backend (ubuntu being the ssl user)
+	sudo chown -R ubuntu:backend /var/www/zimmerman
+	
+	# RESTRICTIVE PERMISSIONS 
+	# ==================================================================
+	# Default: public can do nothing, backend can do everything
+	sudo chmod -R 770 /var/www/zimmerman
+
+	# Set folder and contents to 777: public is allowed to upload files
+	sudo chmod -R 777 /var/www/zimmerman/static/postimages
+
+	# Set folder itself to r+e: public cannot change folder itself
+	sudo chmod    775 /var/www/zimmerman/static/postimages
+
+	# Compiled python file stash, the app should be able to do anything here
+	sudo chmod -R 770 /var/www/zimmerman/__pycache__
+
+	# Be able to read and execute app data as backend, but not edit it
+	sudo chmod -R 750 /var/www/zimmerman/konishienv
+	sudo chmod    750 /var/www/zimmerman/*.py
+
+	# App should be able to modify, read, and execute the database, of course
+	sudo chmod    770 /var/www/zimmerman/*.db	
+	# =====================================================================
+	
+	# Install service
+	sudo cp $GITAUTOMATA/backend.service /etc/systemd/system/backend.service
+	sudo systemctl enable backend
+	
  
  ##############################################
  #                 SETUP HIGALA               #
