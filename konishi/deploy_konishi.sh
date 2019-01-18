@@ -122,12 +122,6 @@ fi
  ##############################################
  printstep "Setting up zimmerman"
  cd $BACKENDFOLDER
- 
- printstep "STOP... HAMMERTIME!" $ERRORMSG 1
- printstep "Open a new SSH window, and do the following:" $NOTIFMSG 1
- printstep "- Set SQLALCHEMY_DATABASE_URI='sqlite:///${BACKENDFOLDER}/konishi.db' in ${BACKENDFOLDER}/config.py" $NOTIFMSG 1
- printstep "- Set SERVER_NAME in the same file to whatever you please." $NOTIFMSG 1
- read -rsp $'Press any key to continue when you\'re done...\n' -n1 key
 
  # Copy config.py over to a backup folder, so it will be restored after doing 'git reset' in freshpull.sh
  cp $BACKENDFOLDER/config.py $GITAUTOMATA/$BACKEND/config.py
@@ -213,10 +207,6 @@ fi
  printstep "Setting up higala"
 
  cd ${DEVFOLDER}/${FRONTEND}
- printstep "STOP... HAMMERTIME!" $ERRORMSG 1
- printstep "Open a new SSH window, and do the following:" $NOTIFMSG 1
- printstep "- Set config.backendURL in ${DEVFOLDER}/${FRONTEND}/src/config.js to the URL your backend will is available on (SERVER_NAME from earlier)." $NOTIFMSG 1
- read -rsp $'Press any key to continue when you\'re done...\n' -n1 key
 
  # Copy config.py over to a backup folder, so it will be restored after doing 'git reset' in freshpull.sh
  mkdir $GITAUTOMATA/$FRONTEND/src
