@@ -199,6 +199,7 @@ fi
 	# Install service
 	sudo cp $GITAUTOMATA/backend.service /etc/systemd/system/backend.service
 	sudo systemctl enable backend
+	sudo systemctl start backend
 	
  
  ##############################################
