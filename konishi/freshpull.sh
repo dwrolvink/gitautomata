@@ -16,8 +16,9 @@ fi
 
 # Stop zimmerman and higala
 # --------------------------------
-printstep "Stopping Higala and Zimmerman"
-fuser -k ${BACKENDPORT}/tcp
+printstep "Stopping Zimmerman"
+# fuser -k ${BACKENDPORT}/tcp  #old method
+sudo systemctl stop backend
 printstep "Done"
 
 # Get most recent code from github
@@ -42,9 +43,17 @@ cp -a $MAINFOLDER/gitautomata/konishi/${FRONTEND}/. $DEVFOLDER/${FRONTEND}/
 #Start zimmerman
 # --------------------------------
 printstep "Starting Zimmerman..."
-cd $MAINFOLDER/${BACKEND}
-source konishienv/bin/activate
-python3 app.py &
+# OLD METHOD ------------
+#cd $MAINFOLDER/${BACKEND}
+#source konishienv/bin/activate
+#python3 app.py &
+# ----------------------+
+sudo systemctl start backend
+sleep 2s
+if ! systemctl is-active --quiet backend;
+then
+      printstep "Could not start Zimmerman" $ERRORMSG
+      sudo systemctl status backend
 
 # Start higala
 # --------------------------------
