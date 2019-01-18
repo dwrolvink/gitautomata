@@ -30,7 +30,7 @@ fi
  ##############################################
  #          SET UP USERS AND GROUPS           #
  ##############################################  
- if grep -q ssl-cert ;
+ if grep -q ssl-cert /etc/group;
  then
  	printstep "ssl-cert already exists, skipping group creation" $NOTIFMSG
  else
