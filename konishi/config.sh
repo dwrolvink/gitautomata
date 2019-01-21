@@ -38,7 +38,7 @@ BACKENDGIT="https://github.com/konishi-project/zimmerman.git"
 BACKEND='zimmerman'
 BACKENDPARENT=$MAINFOLDER
 BACKENDFOLDER="$BACKENDPARENT/$BACKEND"  # note: deploy_konishi.sh assumes this path, don't change it without changing deploy_konishi.sh too
-BACKENDPORT=4001
+BACKENDPORT=4000
 
 # Test if this config is loaded properly in other scripts using this string
 TESTVAR="Config Loaded."
