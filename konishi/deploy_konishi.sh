@@ -159,7 +159,7 @@ fi
       
       
       location / {                                        \n\
-        proxy_pass http://localhost:4000$;                \n\
+        proxy_pass http://localhost:4000;                \n\
         proxy_set_header Host $host;                      \n\
       }                                   \n\
     }                                     \n\
