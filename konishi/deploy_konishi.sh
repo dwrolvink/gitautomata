@@ -66,6 +66,11 @@ fi
    mkdir $DEVFOLDER
  fi 
  
+ # Create restore folder (/var/www/dev/) if it existn't
+ if [ ! -d /var/www/restore ]; then
+   mkdir /var/www/restore
+ fi 
+ 
  # Create config backup directories
  mkdir $GITAUTOMATA/$BACKEND
  mkdir $GITAUTOMATA/$FRONTEND
@@ -128,7 +133,7 @@ fi
  cd $BACKENDFOLDER
 
  # Copy config.py over to a backup folder, so it will be restored after doing 'git reset' in freshpull.sh
- cp $BACKENDFOLDER/config.py $GITAUTOMATA/$BACKEND/config.py
+ cp $BACKENDFOLDER/config.py /var/www/restore/$BACKEND/config.py
  
  # Copy db installation script over so it can find app.py
  cp $GITAUTOMATA/src/zimmerman_installdb.py $BACKENDFOLDER/zimmerman_installdb.py 
@@ -215,7 +220,7 @@ fi
 
  # Copy config.py over to a backup folder, so it will be restored after doing 'git reset' in freshpull.sh
  mkdir $GITAUTOMATA/$FRONTEND/src
- cp $FRONTENDFOLDER/src/config.js $GITAUTOMATA/$FRONTEND/src/config.js
+ cp $FRONTENDFOLDER/src/config.js /var/www/restore/$FRONTEND/src/config.js
  
  # Install npm
  npm install 
