@@ -4,8 +4,8 @@ MAINUSER='dorus'
 
 # Main website.
 # This will be the main entry point for our website, backend and frontend
-MAINWEBSITE='konishi.pcmrhub.com'
-BACKENDLINK="${MAINWEBSITE}/api/v1/"
+MAINWEBSITE='konishi.club'
+BACKENDLINK="backend.konishi.club"
 # Main folder. 
 # This is the webfolder, /var/www/ by default
 MAINFOLDER="/var/www" 
