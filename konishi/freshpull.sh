@@ -35,8 +35,8 @@ printstep "Done"
 # Copy config files back
 # --------------------------------
 printstep "Copying config files back (need to separate config still)"
-cp -a $MAINFOLDER/gitautomata/konishi/${BACKEND}/. $MAINFOLDER/${BACKEND}/
-cp -a $MAINFOLDER/gitautomata/konishi/${FRONTEND}/. $DEVFOLDER/${FRONTEND}/
+cp -a $MAINFOLDER/restore/${BACKEND}/. $MAINFOLDER/${BACKEND}/
+cp -a $MAINFOLDER/restore/${FRONTEND}/. $DEVFOLDER/${FRONTEND}/
 
 
 #Start zimmerman
@@ -67,4 +67,5 @@ npm run build --fix
 printstep "Copying dist files over..."
 cp -rf ${DEVFOLDER}/${FRONTEND}/dist/* ${MAINFOLDER}/${MAINWEBSITE}/
 
+echo -e $printstepLOG
 
