@@ -122,8 +122,6 @@ echo "URxvt*color12: #f2db32"					>> /home/${USER}/.Xresources
 # Set lan: 192..." color in i3 status bar to #f2db32
 cat /home/${USER}/.i3status.conf | awk '{gsub(/color_good = "#[a-zA-Z0-9]{6}"/,"color_good = \"#f2db32\"")}1' | sponge /home/${USER}/.i3status.conf
 
-# Set wallpaper 
-sudo -u $USER nitrogen /home/${USER}/Pictures/Wallpapers
 
 # Modules
 # ---------------------------------------------------
@@ -133,4 +131,10 @@ cd modules/NetworkDrive
 cd ..
 cd Russian
 . ./Russian.sh
+# ---------------------------------------------------
 
+# Restart i3
+sudo -u $USER i3 restart
+
+# Set wallpaper 
+sudo -u $USER nitrogen /home/${USER}/Pictures/Wallpapers

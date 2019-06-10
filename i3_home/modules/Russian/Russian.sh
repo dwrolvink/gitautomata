@@ -17,6 +17,3 @@ echo 'bindsym $mod+space exec ~/.config/custom/russian/i3-keyboard-layout cycle 
 echo '# Show Russian keyboard layout								' >> /home/${USER}/.i3/config
 echo 'bindsym $mod+r exec viewnior ~/.config/custom/russian/RussianKeyboard.jpg		' >> /home/${USER}/.i3/config
 echo '# ==========================================================	' >> /home/${USER}/.i3/config
-
-# Restart i3
-sudo -u $USER i3 restart
