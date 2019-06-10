@@ -25,6 +25,19 @@ pacman -Syuu
 pacman -S 		yay 			--noconfirm
 # Misc shell functions (for sponge mostly)
 pacman -S 		moreutils		--noconfirm
+# Check keyboard and mouse commands
+pacman -S 		xev				--noconfirm
+
+# SSH
+# ---------------------------------------------------
+# SSH is only turned on by default for VM's
+pacman -S openssh
+
+If [ "$MACHINE_TYPE"=="VM" ];
+then
+	sudo systemctl enable sshd
+	sudo systemctl start sshd
+fi
 
 # Main applications
 # ---------------------------------------------------
