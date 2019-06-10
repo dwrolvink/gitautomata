@@ -15,6 +15,12 @@ printstep "[Updating system and installing applications]"
 #############################################
 
 # Update
+# ---------------------------------------------------
+# Manjaro pacman fix
+	sudo pacman -S archlinux-keyring manjaro-keyring
+	sudo pacman-key --populate archlinux manjaro
+	sudo pacman-key --refresh-keys
+# Update manjaro
 printstep "Updating repository"
 pacman -Syuu
 
