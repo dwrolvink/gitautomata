@@ -6,7 +6,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Get script config
-. config.sh
+. ./config.sh
 # Get helper functions
 . ../_functions.sh
 
@@ -21,19 +21,19 @@ pacman -Syuu
 
 # System apps
 # ---------------------------------------------------
-# Install AUR packages
-pacman -S 		yay 			--noconfirm
+# Install AUR packages\
+pacman -S 		yay 			--noconfirm --needed
 # Misc shell functions (for sponge mostly)
-pacman -S 		moreutils		--noconfirm
+pacman -S 		moreutils		--noconfirm --needed
 # Check keyboard and mouse commands
-pacman -S 		xev				--noconfirm
+pacman -S 		xev				--noconfirm --needed
 
 # SSH
 # ---------------------------------------------------
 # SSH is only turned on by default for VM's
-pacman -S openssh
+pacman -S openssh				--noconfirm --needed
 
-If [ "$MACHINE_TYPE"=="VM" ];
+if [ "$MACHINE_TYPE"=="VM" ];
 then
 	sudo systemctl enable sshd
 	sudo systemctl start sshd
@@ -42,26 +42,29 @@ fi
 # Main applications
 # ---------------------------------------------------
 # Browsers
-pacman -S 		chromium 		--noconfirm
-pacman -S 		firefox 		--noconfirm
+pacman -S 		chromium 		--noconfirm --needed
+pacman -S 		firefox 		--noconfirm --needed
 # Audio
-sudo -u $USER 	yay 	spotify		
+sudo -u $USER 	yay 	spotify		--noconfirm --needed
 # Folder browsing	
-pacman -S 		pcmanfm 		--noconfirm
+pacman -S 		pcmanfm 		--noconfirm --needed
 # Editors
-pacman -S 		code			--noconfirm
+pacman -S 		code			--noconfirm --needed
 # Virtualization
-pacman -S 		virtualbox		
+if [ "$MACHINE_TYPE"=="BARE_METAL" ];
+then
+	pacman -S 		virtualbox		--noconfirm --needed
+fi
 
 # Theming
 # ---------------------------------------------------
 # Theme editor for Manjaro
-pacman -S 		lxappearance 		--noconfirm
+pacman -S 		lxappearance 		--noconfirm --needed
 
 # Keybinding
 # ---------------------------------------------------
 # i3 already has keybinding in ~/user/.i3/config, but to use special keycombinations, we need xbindkeys
-pacman -S		xbindkeys			--noconfirm
+pacman -S		xbindkeys			--noconfirm --needed
 
 #############################################
 printstep "[Installing user settings]"
@@ -110,9 +113,9 @@ cat /home/${USER}/.i3status.conf | awk '{gsub(/color_good = "#[a-zA-Z0-9]{6}"/,"
 # Modules
 # ---------------------------------------------------
 cd modules/NetworkDrive
-. NetworkDrive.sh
+. ./NetworkDrive.sh
 
 cd ..
-cd modules/Russian
-. Russian.sh
+cd Russian
+. ./Russian.sh
 
