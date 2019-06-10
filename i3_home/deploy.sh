@@ -76,6 +76,8 @@ printstep "[Installing user settings]"
 sudo -u $USER mkdir /home/${USER}/std-conf
 # Place for custom configurations
 sudo -u $USER mkdir /home/${USER}/.config/custom
+# Place for Wallpapers
+sudo -u $USER mkdir /home/${USER}/Pictures/Wallpapers
 
 # Backup standard config files
 # ---------------------------------------------------
@@ -87,6 +89,7 @@ cp   /home/${USER}/.Xresources		/home/${USER}/std-conf/.Xresources
 cp -f config/i3-config 			/home/${USER}/.i3/config			# i3 config
 cp -f /etc/i3status.conf 		/home/${USER}/.i3status.conf		# Set user version of i3 status bar config
 cp -f config/.xbindkeysrc		/home/${USER}/.xbindkeysrc			# xbindkeys config
+cp -f src/wallpaper.jpg			/home/${USER}/Pictures/Wallpapers/  # wallpaper
 
 if [ "$MACHINE_TYPE"=="BARE_METAL" ];
 then
@@ -95,8 +98,18 @@ fi
 
 # Tweaking
 # ---------------------------------------------------
+# Set i3 modkey
+if [ "$MODKEY"=="SUPER" ];
+then
+	echo 'Super'
+	sed -i "s+{{MODKEY}}+Mod4+g" 				/home/${USER}/.i3/config # super
+else
+	echo 'Alt'
+	sed -i "s+{{MODKEY}}+Mod1+g" 				/home/${USER}/.i3/config # alt
+fi
+
 # Remove cp safety
-sudo -u $USER unalias cp
+# sudo -u $USER unalias cp # doesn't work!
 
 # Set Nano as standard editor
 echo "VISUAL=nano; export VISUAL EDITOR=nano; export EDITOR" 	>> /home/${USER}/.profile
@@ -109,6 +122,8 @@ echo "URxvt*color12: #f2db32"					>> /home/${USER}/.Xresources
 # Set lan: 192..." color in i3 status bar to #f2db32
 cat /home/${USER}/.i3status.conf | awk '{gsub(/color_good = "#[a-zA-Z0-9]{6}"/,"color_good = \"#f2db32\"")}1' | sponge /home/${USER}/.i3status.conf
 
+# Set wallpaper 
+sudo -u $USER nitrogen /home/${USER}/Pictures/Wallpapers
 
 # Modules
 # ---------------------------------------------------

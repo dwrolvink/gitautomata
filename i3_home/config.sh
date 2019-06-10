@@ -1,6 +1,7 @@
 # Main Config
 USER='dorus'
 MACHINE_TYPE='VM' 								# <VM, BARE_METAL>
+MODKEY='SUPER'									# <ALT, SUPER>
 
 # Install NetworkDrive
 INSTAL_NETWORK_DRIVE=1 							# <0,1> :: <no,yes>
