@@ -16,4 +16,5 @@ sed -i "s+{{GID}}+$(id -g $USER)+g" 						mountnwd.service
 cp -f   mountnwd.service 	/etc/systemd/system/mountnwd.service
 
 # Mount network drive
-systemctl enable /etc/systemd/system/mountnwd.service
+systemctl enable mountnwd.service
+systemctl start  mountnwd.service
