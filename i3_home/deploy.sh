@@ -90,11 +90,6 @@ cp -f /etc/i3status.conf 		/home/${USER}/.i3status.conf		# Set user version of i
 cp -f config/.xbindkeysrc		/home/${USER}/.xbindkeysrc			# xbindkeys config
 cp -f src/wallpaper.jpg			/home/${USER}/Pictures/Wallpapers/  # wallpaper
 
-if [ "$MACHINE_TYPE"=="BARE_METAL" ];
-then
-	cp    config/20-radeon.conf 	/etc/X11/xorg.conf.d/20-radeon.conf 	# anti tearing
-fi
-
 # Tweaking
 # ---------------------------------------------------
 # Set i3 modkey
