@@ -1,3 +1,9 @@
+# Cancel execution if module is not configured to be installed.
+if [[ $INSTAL_TIGERVNC -ne 1 ]];
+then
+  return "Opted out of installing TigerVNC"
+fi
+
 # Install TigerVNC 
 pacman -S tigervnc --noconfirm
 
