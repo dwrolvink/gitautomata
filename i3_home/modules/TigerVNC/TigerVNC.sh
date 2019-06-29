@@ -1,7 +1,8 @@
 # Cancel execution if module is not configured to be installed.
 if [[ $INSTAL_TIGERVNC -ne 1 ]];
 then
-  return "Opted out of installing TigerVNC"
+  echo "Opted out of installing TigerVNC"
+  return 0
 fi
 
 # Install TigerVNC 
