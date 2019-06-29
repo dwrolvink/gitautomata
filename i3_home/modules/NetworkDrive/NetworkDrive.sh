@@ -1,7 +1,8 @@
 # Cancel execution if module is not configured to be installed.
 if [[ $INSTAL_NETWORK_DRIVE -ne 1 ]];
 then
-  return "Opted out of installing a Network Drive"
+  echo "Opted out of installing a Network Drive"
+  return 0
 fi
 
 # Network drive functionality
