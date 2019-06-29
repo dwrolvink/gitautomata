@@ -1,0 +1,17 @@
+[Unit]
+Description=Markdown service for dwrolvink.com
+
+# Make sure the network is initialized first
+After=network.target
+
+[Service]
+ExecStart=/home/dorus/.yarn/bin/markserv -p 8081 -a 0.0.0.0
+
+# Restart Backend when an error causes it to shutdown
+Restart=on-failure
+TimeoutStartSec=20
+WorkingDirectory=/var/www/dwrolvink.github.io
+
+[Install]
+# Make sure this service is started up after reboot
+WantedBy=multi-user.target
