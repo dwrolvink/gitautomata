@@ -1,2 +1,1 @@
-WEBSITE_NAME="dwrolvink.com"
-SERVICE_PORT="8081"
+
