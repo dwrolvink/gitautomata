@@ -58,6 +58,7 @@ firewall-cmd --reload
 # ---------------------------------------------------
 cd modules/markserv
 . ./deploy_markserv.sh
+cd $INSTALLATION_DIRECTORY
 
 # Reload Nginx to apply changes
 # ---------------------------------------------------
