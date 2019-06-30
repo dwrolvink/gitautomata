@@ -1,5 +1,4 @@
 # http://www.dwrolvink.com/?view=coding/website/install_markserv
-. ./config.sh
 
 # :: INSTAL NODEJS ------------------------------------
 # Add node repo, install make tools
