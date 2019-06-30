@@ -22,9 +22,9 @@ sudo firewall-cmd --reload
 # Install markserv
 yarn global add markserv
 
-# Edit template (manual)
-vi /usr/local/share/.config/yarn/global/node_modules
-
+# Edit template
+ms_template="/usr/local/share/.config/yarn/global/node_modules/markserv/lib/templates/markdown.html"
+echo -e '<article class="markdown-body">\n{{{content}}}\n</article>' > $ms_template
 
 # :: ENABLE MARKSERV ---------------------------------
 cp markserver.service-master markserver.service
