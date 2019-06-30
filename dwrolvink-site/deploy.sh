@@ -6,13 +6,24 @@ USER="user"
 SERVER_NAME="web002"
 
 WEBSITE_NAME="dwrolvink.com"
-WEB_ROOT="/home/${USER}/www/"
-WEBSITE_DIRECTORY="${WEB_ROOT}/dwrolvink/"
+WEB_ROOT="/home/${USER}/www"
+WEBSITE_DIRECTORY="${WEB_ROOT}/${WEBSITE_NAME}/"
 
 MARKSERV_PORT="8081"
 FRONTEND_PORT="80"
 
 INSTALLATION_DIRECTORY=$(pwd)
+
+# Firewall Changes
+# ---------------------------------------------------
+# Set SELINUX to permissive
+echo "SELINUX=permissive" >> /etc/selinux/config
+setenforce 0
+
+# Open firewall
+firewall-cmd --zone=public --add-port=${FRONTEND_PORT}/tcp --permanent
+firewall-cmd --zone=public --add-port=${MARKSERV_PORT}/tcp --permanent
+firewall-cmd --reload
 
 # Install nginx
 # ---------------------------------------------------
@@ -48,11 +59,6 @@ cd $INSTALLATION_DIRECTORY
 
 ln -s /etc/nginx/sites-available/${WEBSITE_NAME}.conf /etc/nginx/sites-enabled/${WEBSITE_NAME}.conf
 rm /etc/nginx/sites-available/default.conf
-
-# Open firewall
-firewall-cmd --zone=public --add-port=80/tcp --permanent
-firewall-cmd --reload
-
 
 # Install Markserv
 # ---------------------------------------------------
