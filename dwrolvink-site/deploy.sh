@@ -42,7 +42,7 @@ echo "server_names_hash_bucket_size 64;" >> /etc/nginx/nginx.conf
 cd templates
   template="siteblock.conf"; filename="${WEBSITE_NAME}.conf"
   substitute=(SERVER_NAME WEBSITE_NAME WEBSITE_DIRECTORY MARKSERV_PORT FRONTEND_PORT)
-  . ../tools/substitute.sh
+  . ../../tools/substitute.sh
   cp -f ${WEBSITE_NAME}.conf /etc/nginx/sites-available/${WEBSITE_NAME}.conf
 cd $INSTALLATION_DIRECTORY
 
