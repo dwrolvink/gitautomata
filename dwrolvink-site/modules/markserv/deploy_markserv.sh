@@ -30,7 +30,7 @@ vi /home/${USER}/.yarn/bin/markserv/lib/templates/markdown.html
 cp markserver.service-master markserver.service
 sed -i "s+{{WEBSITE_NAME}}+${WEBSITE_NAME}+g" markserver.service
 sed -i "s+{{WEBSITE_DIRECTORY}}+${WEBSITE_DIRECTORY}+g" markserver.service
-sed -i "s+{{SERVICE_PORT}}+${SERVICE_PORT}+g" markserver.service
+sed -i "s+{{MARKSERV_PORT}}+${SERVICE_PORT}+g" markserver.service
 sed -i "s+{{USER}}+${USER}+g" markserver.service
 sudo cp -f markserver.service /etc/systemd/system/markserver.service
 
