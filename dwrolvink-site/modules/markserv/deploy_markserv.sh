@@ -13,7 +13,7 @@ curl -sL https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.r
 sudo yum install -y yarn
  
  
- # :: SET FIREWALL ------------------------------------
+# :: SET FIREWALL ------------------------------------
 sudo firewall-cmd --zone=public --add-port=${MARKSERV_PORT}/tcp --permanent
 sudo firewall-cmd --reload
 
@@ -30,6 +30,7 @@ vi /usr/local/share/.config/yarn/global/node_modules
 cp markserver.service-master markserver.service
 sed -i "s+{{WEBSITE_NAME}}+${WEBSITE_NAME}+g" markserver.service
 sed -i "s+{{WEBSITE_DIRECTORY}}+${WEBSITE_DIRECTORY}+g" markserver.service
+sed -i "s+{{MARKSERV_EXE}}+$(whereis markserv)+g" markserver.service
 sed -i "s+{{MARKSERV_PORT}}+${MARKSERV_PORT}+g" markserver.service
 sed -i "s+{{USER}}+${USER}+g" markserver.service
 sudo cp -f markserver.service /etc/systemd/system/markserver.service
