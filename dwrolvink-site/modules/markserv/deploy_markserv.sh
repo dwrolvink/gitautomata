@@ -14,7 +14,7 @@ sudo yum install -y yarn
  
  
  # :: SET FIREWALL ------------------------------------
-sudo firewall-cmd --zone=public --add-port=${SERVICE_PORT}/tcp --permanent
+sudo firewall-cmd --zone=public --add-port=${MARKSERV_PORT}/tcp --permanent
 sudo firewall-cmd --reload
 
 
@@ -23,14 +23,14 @@ sudo firewall-cmd --reload
 yarn global add markserv
 
 # Edit template (manual)
-vi /home/${USER}/.yarn/bin/markserv/lib/templates/markdown.html
+vi /usr/local/share/.config/yarn/global/node_modules
 
 
 # :: ENABLE MARKSERV ---------------------------------
 cp markserver.service-master markserver.service
 sed -i "s+{{WEBSITE_NAME}}+${WEBSITE_NAME}+g" markserver.service
 sed -i "s+{{WEBSITE_DIRECTORY}}+${WEBSITE_DIRECTORY}+g" markserver.service
-sed -i "s+{{MARKSERV_PORT}}+${SERVICE_PORT}+g" markserver.service
+sed -i "s+{{MARKSERV_PORT}}+${MARKSERV_PORT}+g" markserver.service
 sed -i "s+{{USER}}+${USER}+g" markserver.service
 sudo cp -f markserver.service /etc/systemd/system/markserver.service
 
