@@ -1,0 +1,12 @@
+[Unit]
+ Description=Mount network drive
+ After=network-online.target
+
+[Service]
+ Type=simple
+ ExecStart=sudo mount -t cifs {{NETWORK_DRIVE_URL}} {{MOUNT_LOCATION}} -o uid={{UID}},gid={{GID}}
+ KillMode=process
+ KillSignal=SIGINT
+
+[Install]
+ WantedBy=multi-user.target

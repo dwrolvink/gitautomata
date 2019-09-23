@@ -1,0 +1,12 @@
+# Open Applications 
+# -------------------------------------
+"firefox"
+	m:0x4 + c:10 #ctrl_r + 1
+
+"chromium"
+	m:0x4 + c:11 #ctrl_r + 2
+
+"spotify"
+	m:0x4 + c:12 #ctrl_r + 3
+
+
