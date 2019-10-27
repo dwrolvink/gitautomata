@@ -31,7 +31,10 @@ pacman -S 		yay 			--noconfirm --needed
 # Misc shell functions (for sponge mostly)
 pacman -S 		moreutils		--noconfirm --needed
 # Check keyboard and mouse commands
-pacman -S 		xev				--noconfirm --needed
+pacman -S 		xev			--noconfirm --needed
+# Utilities
+pacman -S		flameshot		--noconfirm --needed # screenshots
+pacman -S		redshift		--noconfirm --needed # f.lux for linux
 
 # SSH
 # ---------------------------------------------------
@@ -83,6 +86,8 @@ sudo -u $USER mkdir /home/${USER}/std-conf
 sudo -u $USER mkdir /home/${USER}/.config/custom
 # Place for Wallpapers
 sudo -u $USER mkdir /home/${USER}/Pictures/Wallpapers
+# Redshift custom config
+sudo -u $USER mkdir /home/${USER}/.config/redshift
 
 # Backup standard config files
 # ---------------------------------------------------
@@ -95,6 +100,8 @@ cp -f config/i3-config 			/home/${USER}/.i3/config			# i3 config
 cp -f /etc/i3status.conf 		/home/${USER}/.i3status.conf		# Set user version of i3 status bar config
 cp -f config/.xbindkeysrc		/home/${USER}/.xbindkeysrc			# xbindkeys config
 cp -f src/wallpaper.jpg			/home/${USER}/Pictures/Wallpapers/  # wallpaper
+cp -f config/i3-config 			/home/${USER}/.config/
+cp -f config/redshift.conf		/home/${USER}/.config/redshift/redshift.conf
 
 # Tweaking
 # ---------------------------------------------------
