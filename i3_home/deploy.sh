@@ -17,9 +17,9 @@ printstep "[Updating system and installing applications]"
 # Update
 # ---------------------------------------------------
 # Manjaro pacman fix
-	sudo pacman -S archlinux-keyring manjaro-keyring
-	sudo pacman-key --populate archlinux manjaro
-	sudo pacman-key --refresh-keys
+	sudo pacman -S archlinux-keyring manjaro-keyring --noconfirm
+	sudo pacman-key --populate archlinux manjaro     
+	sudo pacman-key --refresh-keys                   
 # Update manjaro
 printstep "Updating repository"
 pacman -Syuu
@@ -50,19 +50,19 @@ fi
 # Main applications
 # ---------------------------------------------------
 # Browsers
-pacman -S 		chromium 		--noconfirm --needed
+#pacman -S 		chromium 		--noconfirm --needed
 pacman -S 		firefox 		--noconfirm --needed
 # Audio
-sudo -u $USER 	yay 	spotify		--noconfirm --needed
+#sudo -u $USER 	yay 	spotify		--noconfirm --needed
 # Folder browsing	
 pacman -S 		pcmanfm 		--noconfirm --needed
 # Editors
 pacman -S 		code			--noconfirm --needed
 # Virtualization
-if [ "$MACHINE_TYPE"=="BARE_METAL" ];
-then
-	pacman -S 		virtualbox		--noconfirm --needed
-fi
+#if [ "$MACHINE_TYPE"=="BARE_METAL" ];
+#then
+#	pacman -S 		virtualbox		--noconfirm --needed
+#fi
 
 # Theming
 # ---------------------------------------------------
