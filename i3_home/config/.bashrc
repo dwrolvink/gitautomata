@@ -24,8 +24,6 @@ bash_prompt_command() {
 }
 
 
-
-
 ##
 ##	GENERATE A FORMAT SEQUENCE
 ##
@@ -50,8 +48,6 @@ format_font()
 		;;
 	esac
 }
-
-
 
 ##
 ## COLORIZE BASH PROMT
@@ -111,15 +107,10 @@ bash_prompt() {
 	local GRAY_BOLD="\[\033[1;90m\]"
 	local BLUE_BOLD="\[\033[1;38;5;74m\]"
 	
-	
-	
-	
-	
+
 	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 	  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## 
-
-	
 	
 	##                          CONFIGURE HERE                                ##
 
@@ -201,8 +192,6 @@ bash_prompt() {
 	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## 	
 
 	
-	
-	
 	############################################################################
 	## TEXT FORMATING                                                         ##
 	## Generate the text formating according to configuration                 ##
@@ -242,7 +231,6 @@ bash_prompt() {
 	local PROMT_HOST=$"$TEXT_FORMAT_1 \h "
 	local PROMT_PWD=$"$TEXT_FORMAT_3 \${NEW_PWD} "
 	local PROMT_INPUT=$"$PROMT_FORMAT "
-
 
 	############################################################################
 	## SEPARATOR FORMATING                                                    ##
@@ -325,32 +313,8 @@ PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
 
-
-
-### EOF ###
-
-
 # better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 
-alias ls="ls --color=auto" 
-alias prun="php -S 0.0.0.0:8080"
-alias gc="git clone"
-alias rmf="rm -rf"
-alias nano="nano -w"
-#alias c="cal -3"
-
-function arun { ansible-playbook -i localhost "$1" -v; }
-function gitp { git pull; git add --all .; git commit -m "${1}"; git push; }
-
-
-function c { cd "$1"; clear; ls -1a; }
-alias u="cd ..; clear; ls -1a"
-
-eval "$(ssh-agent -s)" > /dev/null
-ssh-add /home/dorus/.ssh/github2 2>/dev/null
-
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/prog/go
 
 
