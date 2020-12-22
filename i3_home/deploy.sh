@@ -28,6 +28,7 @@ pacman -Syuu
 # ---------------------------------------------------
 # Install AUR packages\
 pacman -S 		yay 			--noconfirm --needed
+pacman -S 		base-devel		--noconfirm --needed
 # Misc shell functions
 pacman -S 		moreutils		--noconfirm --needed
 pacman -S		xclip			--noconfirm --needed
