@@ -7,3 +7,8 @@ alias prun="php -S 0.0.0.0:8080"
 alias gc="git clone"
 alias rmf="rm -rf"
 alias nano="nano -w"
+alias tf="terraform"
+
+function enter { source ~/venvs/"${1}"/bin/activate }
+function newvenv { python -m venv ~/venvs/"$1" }
+alias leave="deactivate"

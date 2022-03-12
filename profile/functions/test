@@ -1,0 +1,27 @@
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+function gitp { git pull; git add --all .; git commit -m "${1}"; git push; }
+function c { cd "$1"; clear; ls -1a; }
+alias u="cd ..; clear; ls -1a"
+
+# <GITAUTOMATA TOP>
+# --------------------------
+alias ls="ls --color=auto -l" 
+alias prun="php -S 0.0.0.0:8080"
+alias gc="git clone"
+alias rmf="rm -rf"
+alias nano="nano -w"
+alias tf="terraform"
+# --------------------------
+# <GITAUTOMATA BOTTOM>
+
+function enter { source ~/venvs/"${1}"/bin/activate }
+function newvenv { python -m venv ~/venvs/"$1" }
+alias leave="deactivate"
