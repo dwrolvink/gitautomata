@@ -6,8 +6,14 @@ FILENAME=$1
 
 # Build command (default is vim)
 COMMAND='no_command_parsed'
-[ ! -z $2 ] && COMMAND="$2 $FILENAME ; read"
-[ -z $2 ] && COMMAND="vim $FILENAME" 
+[ ! -z $2 ] && COMMAND="$2 $FILENAME"
+[ -z $2 ] && COMMAND="vim $FILENAME"
+
+# Add read to cat command so that the terminal doesn't close immediately
+[[ $2 == "cat" ]] && COMMAND="$COMMAND; read"
+
+# Add shell to ls command so that the terminal doesn't close and we can browse further
+[[ $2 == ls* ]] && COMMAND="$COMMAND; $SHELL"
 
 echo $COMMAND
 
