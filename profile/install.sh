@@ -15,10 +15,11 @@ done
 
 # Functions
 function link_file {
-    [ ! -f $1 ] && print_error "ERROR: File $1 does not exist! Skipped." && return
-    [ $REPLACE -eq 1 ] && ([ -L $2 ] || [ -f $2 ]) && rm $2 && echo "Replacing: $2"
+    replacing=0
+    [ ! -f $1 ] && print_error "ERROR: File $1 does not exist! Skipped." && return 1
+    [ $REPLACE -eq 1 ] && ([ -L $2 ] || [ -f $2 ]) && rm $2 && echo "Replacing: $2" && replacing=1
     [ $REPLACE -eq 0 ] && [ -L $2 ] || [ -f $2 ] && print_verbose "Skipped: File or symlink $2 already exists. Use -f to replace." && return
-    ([ ! -L $2 ] && [ ! -f $2 ]) && echo "Installing: $2"
+    [ $replacing -eq 0 ] && ([ ! -L $2 ] && [ ! -f $2 ]) && echo "Installing: $2"
 
     ln -s $1 $2
     return 0
@@ -30,7 +31,7 @@ function unlink_file {
 }
 function set_file {
     [ $UNINSTALL_ALL -eq 1 ] && unlink_file $2 $3 && return
-    [ $1 -eq 1 ] && link_file $2 $3
+    [ $1 -eq 1 ] && link_file $2 $3 && [ $4 -eq 1 ] && chmod +x $2
     [ $1 -eq 0 ] && unlink_file $2 $3
     return 0
 }
@@ -46,6 +47,6 @@ function print_verbose {
 [ ! -d $FUNCTIONS_FOLDER ] && mkdir -p $FUNCTIONS_FOLDER
 
 # Links programs/scripts
-set_file 1 $GIT_FUNCTIONS_FOLDER/switch_to      $FUNCTIONS_FOLDER/switch_to
-set_file 1 $GIT_FUNCTIONS_FOLDER/vv             $FUNCTIONS_FOLDER/vv
-set_file 0 $GIT_FUNCTIONS_FOLDER/test           $FUNCTIONS_FOLDER/test
+set_file    1   $GIT_FUNCTIONS_FOLDER/switch_to         $FUNCTIONS_FOLDER/switch_to             1
+set_file    1   $GIT_FUNCTIONS_FOLDER/vv                $FUNCTIONS_FOLDER/vv                    1
+set_file    0   $GIT_FUNCTIONS_FOLDER/test              $FUNCTIONS_FOLDER/test                  1
