@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+FILENAME=$1
+
+# Get commandline options
+REPLACE=0
+COMMAND='vim'
+while getopts c: flag
+do
+    case "${flag}" in
+        c) COMMAND="$OPTARG";;
+    esac
+done
+
+
+# Prepend pwd if relative path
+[[ $FILENAME != /* ]] && FILENAME="$PWD/$FILENAME"
+
+# Open vim in new fullscreen terminal
+gnome-terminal --maximize -- $COMMAND $FILENAME

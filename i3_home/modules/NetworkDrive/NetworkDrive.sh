@@ -1,3 +1,10 @@
+# Install NetworkDrive
+INSTAL_NETWORK_DRIVE=1 							# <0,1> :: <no,yes>
+NETWORK_DRIVE_URL='//192.168.1.1/USB_Storage'
+
+# Main Config
+USER='dorus'
+
 # Cancel execution if module is not configured to be installed.
 if [[ $INSTAL_NETWORK_DRIVE -ne 1 ]];
 then

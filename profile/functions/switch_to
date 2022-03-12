@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# input
+app=$1 # e.g. "— Mozilla Firefox"
+
+# get window id stack
+IDs=$(xprop -root| grep "^_NET_CLIENT_LIST_STACKING" | tr "," " "); IDs=(${IDs##*#});
+
+# find window id's with app in the name
+win_list=$(wmctrl -lx | grep "$app" | awk '{print $1}')
+
+# open the first match from the stack
+for (( idx=${#IDs[@]}-1 ; idx>=0 ; idx-- )) ; do
+    for i in $win_list; do
+        if [ $((i)) = $((IDs[idx])) ]; then
+            wmctrl -ia $i
+            exit 0
+        fi
+    done
+done
+
