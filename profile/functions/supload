@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sftp user@web002:/home/user/www2/share/uploads <<< $"put '$1'"

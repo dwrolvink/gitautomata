@@ -55,9 +55,11 @@ function print_verbose {
 [ ! -d $FUNCTIONS_FOLDER ] && mkdir -p $FUNCTIONS_FOLDER
 
 # Links programs/scripts
+set_file    1   $GIT_FUNCTIONS_FOLDER/reload_profile    $FUNCTIONS_FOLDER/reload_profile        1
 set_file    1   $GIT_FUNCTIONS_FOLDER/switch_to         $FUNCTIONS_FOLDER/switch_to             1
 set_file    1   $GIT_FUNCTIONS_FOLDER/vv                $FUNCTIONS_FOLDER/vv                    1
-set_file    0   $GIT_FUNCTIONS_FOLDER/test              $FUNCTIONS_FOLDER/test                  1
+set_file    1   $GIT_FUNCTIONS_FOLDER/supload           $FUNCTIONS_FOLDER/supload               1
+#set_file   0   $GIT_FUNCTIONS_FOLDER/test              $FUNCTIONS_FOLDER/test                  1
 
 # Insert shell additions to shell rc files
 # ========================================
