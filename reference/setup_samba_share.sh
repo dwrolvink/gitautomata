@@ -14,6 +14,11 @@ mkdir -p /srv/samba-system
 chmod ugo+rwx /srv/samba-system -R
 setfacl -Rdm m::rwx /srv/samba-system
 
+. mount_disk.sh
+chmod ugo+rwx /srv/archive -R
+setfacl -Rdm m::rwx /srv/archive
+
+
 # Create user for system share
 # Create linux user
 useradd -m smb_admin
@@ -54,6 +59,16 @@ vim /etc/samba/smb.conf
    public = no
    writable = yes
    valid users = smb_admin
+   printable = no
+   create mask = 0664
+   directory mask = 2775
+   force create mode = 0664
+   force directory mode = 2775
+
+[archive]
+   path = /srv/archive
+   public = yes
+   writable = yes
    printable = no
    create mask = 0664
    directory mask = 2775
